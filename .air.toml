@@ -1,0 +1,27 @@
+root = "."
+tmp_dir = "tmp"
+
+[build]
+  # Compiles your server entry point into a temporary directory
+  cmd = "go build -o ./tmp/main.exe ./cmd/server/main.go"
+  # Runs the compiled binary executable
+  bin = "./tmp/main.exe"
+  # Directories you want to watch for code modifications
+  include_dir = ["cmd", "internal"]
+  # File extensions to watch
+  include_ext = ["go", "tpl", "html", "toml", "env"]
+  # Directories or files to completely ignore to prevent infinite reload loops
+  exclude_dir = ["assets", "tmp", "vendor"]
+  # Stop rebuilding instantly if a syntax compilation error occurs
+  stop_on_error = true
+  # Add delay (in milliseconds) after changes to prevent double-rebuilds
+  delay = 1000
+
+[log]
+  time = true
+
+[color]
+  main = "magenta"
+  watcher = "cyan"
+  build = "yellow"
+  runner = "green"

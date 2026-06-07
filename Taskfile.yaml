@@ -1,0 +1,12 @@
+version: "3"
+
+tasks:
+  run:
+    desc: Run the Fiber backend server natively from root
+    cmds:
+      - go run ./cmd/server/
+
+  dev:
+    desc: Start the backend server with automatic hot-reloading (Air)
+    cmds:
+      - air -c .air.toml
