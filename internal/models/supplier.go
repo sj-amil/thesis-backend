@@ -2,15 +2,13 @@ package models
 
 import (
 	"time"
-
-	"github.com/google/uuid"
 )
 
 // SupplierProfile stores manufacturer/factory data for suppliers.
 // Includes verification status and rating for marketplace trust scoring.
 type SupplierProfile struct {
-	ID             uuid.UUID `gorm:"type:uuid;primaryKey;default:gen_random_uuid()" json:"id"`
-	UserID         uuid.UUID `gorm:"type:uuid;uniqueIndex:idx_suppliers_user;not null" json:"user_id"`
+	ID             uint      `gorm:"primaryKey;autoIncrement" json:"id"`
+	// UserID         uuid.UUID `gorm:"type:uuid;uniqueIndex:idx_suppliers_user;not null" json:"user_id"`
 	CompanyName    string    `gorm:"size:255;not null" json:"company_name"`
 	ContactInfo    string    `gorm:"size:255" json:"contact_info"`
 	Address        string    `gorm:"type:text" json:"address"`
