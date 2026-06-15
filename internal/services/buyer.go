@@ -6,7 +6,6 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber/v3"
-	"github.com/google/uuid"
 )
 
 func BuyerList(c fiber.Ctx) error {
@@ -70,7 +69,7 @@ func BuyerUpdate(c fiber.Ctx) error {
 	var record models.BuyerProfile
 	database.DB.First(&record, id)
 
-	if record.ID == uuid.Nil {
+	if record.ID == 0 {
 		log.Println("Record not found")
 		context["msg"] = "Record not found"
 		c.Status(400)
@@ -107,7 +106,7 @@ func BuyerDelete(c fiber.Ctx)  error {
 	var record models.BuyerProfile
 	database.DB.First(&record, id)
 	
-	if record.ID == uuid.Nil {
+	if record.ID == 0 {
 		log.Println("Record not found")
 		context["msg"] = "Record not found."
 		c.Status(400)

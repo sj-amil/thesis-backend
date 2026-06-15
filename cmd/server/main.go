@@ -17,7 +17,7 @@ func main() {
 	database.ConnectDB()
 
 	fmt.Println("Running database migrations...")
-	err := database.DB.AutoMigrate(new(models.Blog), new(models.RFQ), new(models.RFQItem), new(models.Quotation), new(models.SupplierProfile))
+	err := database.DB.AutoMigrate(new(models.Blog), new(models.User), new(models.BuyerProfile), new(models.RFQ), new(models.RFQItem), new(models.Quotation), new(models.SupplierProfile))
 	if err != nil {
 		log.Fatalf("Migration failed: %v", err)
 	}

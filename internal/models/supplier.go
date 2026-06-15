@@ -1,14 +1,10 @@
 package models
 
-import (
-	"time"
-)
+import "time"
 
-// SupplierProfile stores manufacturer/factory data for suppliers.
-// Includes verification status and rating for marketplace trust scoring.
 type SupplierProfile struct {
 	ID             uint      `gorm:"primaryKey;autoIncrement" json:"id"`
-	// UserID         uuid.UUID `gorm:"type:uuid;uniqueIndex:idx_suppliers_user;not null" json:"user_id"`
+	UserID         uint      `gorm:"uniqueIndex:idx_suppliers_user;not null" json:"user_id"`
 	CompanyName    string    `gorm:"size:255;not null" json:"company_name"`
 	ContactInfo    string    `gorm:"size:255" json:"contact_info"`
 	Address        string    `gorm:"type:text" json:"address"`
@@ -19,6 +15,6 @@ type SupplierProfile struct {
 	UpdatedAt      time.Time `gorm:"autoUpdateTime" json:"updated_at"`
 
 	// Relations
-	// User       *User       `gorm:"foreignKey:UserID" json:"-"`
-	// Quotations []Quotation `gorm:"foreignKey:SupplierID" json:"quotations,omitempty"`
+	User       *User       `gorm:"foreignKey:UserID" json:"-"`
+	Quotations []Quotation `gorm:"foreignKey:SupplierID" json:"quotations,omitempty"`
 }
