@@ -10,10 +10,10 @@ import (
 
 func SetupRoutes(app *fiber.App) {
 	
-	app.Get("/", services.BlogList)
-	app.Post("/", services.BlogCreate)
-	app.Put("/:id",  services.BlogUpdate)
-	app.Delete("/:id", services.BlogDelete)
+	app.Get("/all-blogs", services.BlogList)
+	app.Post("/create-blogs", services.BlogCreate)
+	app.Put("/edit-blogs/:id",  services.BlogUpdate)
+	app.Delete("/delete-blogs/:id", services.BlogDelete)
 
 	app.Get("/all-rfqs", services.RfqsList)
 	app.Post("/create-rfqs", services.RfqsCreate)
